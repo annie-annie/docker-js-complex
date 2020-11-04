@@ -1,7 +1,7 @@
 {
   "name": "docker-js-complex",
   "version": "0.1.0",
-  "description": "An react and express project with a postgres and redis db and a worker watching for redis changes",
+  "description": "A react and express project with a postgres and redis db and a worker watching for redis changes",
   "main": "index.js",
   "author": "Me",
   "license": "MIT",
