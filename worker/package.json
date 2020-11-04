@@ -10,7 +10,7 @@
     "nodemon": "^2.0.6",
     "redis": "^3.0.2"
   },
-  "script": {
+  "scripts": {
     "start": "nodemon index.js",
     "dev": "nodemon"
   }
