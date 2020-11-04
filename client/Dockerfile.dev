@@ -1,0 +1,9 @@
+FROM node:alpine
+
+WORKDIR /usr/app
+
+# Node modules installed outside docker for development
+
+COPY . .
+
+CMD  ["yarn", "start"]
