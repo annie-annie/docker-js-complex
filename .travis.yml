@@ -1,0 +1,35 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t annieannie/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run annieannie/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t annieannie/docker-js-complex--client ./client
+  - docker build -t annieannie/docker-js-complex--nginx ./nginx
+  - docker build -t annieannie/docker-js-complex--server ./server
+  - docker build -t annieannie/docker-js-complex--worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push annieannie/docker-js-complex--client
+  - docker push annieannie/docker-js-complex--nginx
+  - docker push annieannie/docker-js-complex--server
+  - docker push annieannie/docker-js-complex--worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-1
+  app: docker-js-complex
+  env: DockerJsComplex-env
+  bucket_name: elasticbeanstalk-eu-west-1-663264990597
+  bucket_path: docker-js-complex
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
