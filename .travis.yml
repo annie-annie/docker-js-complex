@@ -6,7 +6,7 @@ before_install:
   - docker build -t annieannie/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run annieannie/react-test npm test -- --coverage
+  - docker run annieannie/react-test yarn test
 
 after_success:
   - docker build -t annieannie/docker-js-complex--client ./client
