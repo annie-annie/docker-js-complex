@@ -1,8 +1,15 @@
 sudo: required
+language: node_js
+node_js:
+  - '12'
+
 services:
   - docker
 
-before_install:
+install:
+  - ls
+  - yarn -v
+  - (cd ./client && yarn install)
   - docker build -t annieannie/react-test -f ./client/Dockerfile.dev ./client
 
 script:
