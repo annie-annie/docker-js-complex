@@ -16,10 +16,10 @@ script:
   - docker run annieannie/react-test yarn test
 
 after_success:
-  - docker build -t annieannie/docker-js-complex--client ./client
-  - docker build -t annieannie/docker-js-complex--nginx ./nginx
-  - docker build -t annieannie/docker-js-complex--server ./server
-  - docker build -t annieannie/docker-js-complex--worker ./worker
+  - docker build -t annieannie/docker-js-complex-client ./client
+  - docker build -t annieannie/docker-js-complex-nginx ./nginx
+  - docker build -t annieannie/docker-js-complex-server ./server
+  - docker build -t annieannie/docker-js-complex-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
