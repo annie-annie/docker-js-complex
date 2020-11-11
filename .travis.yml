@@ -23,10 +23,10 @@ after_success:
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push annieannie/docker-js-complex--client
-  - docker push annieannie/docker-js-complex--nginx
-  - docker push annieannie/docker-js-complex--server
-  - docker push annieannie/docker-js-complex--worker
+  - docker push annieannie/docker-js-complex-client
+  - docker push annieannie/docker-js-complex-nginx
+  - docker push annieannie/docker-js-complex-server
+  - docker push annieannie/docker-js-complex-worker
 
 deploy:
   provider: elasticbeanstalk
